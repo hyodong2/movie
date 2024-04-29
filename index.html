@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인기영화 리스트</title>
+    <style>
+        .mytitle {
+            background-color: burlywood;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mytitle>button {
+            width: 50px;
+            height: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mycard {
+            background-color: green;
+            margin-top: 100px;
+        }
+    </style>
+
+
+    <script>
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMmJmYWU4ODMwNTc4ODAyMDQ3YzBiZjA2NWYzZDk1MCIsInN1YiI6IjY2MjViYTFmMDdmYWEyMDE4NzlhMmI5NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.v9b-411zC5JIow_43BY7e9266HXWjYD1GSgURvFumUI'
+            }
+        };
+        let a
+        fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
+            .then(response => response.json())
+            .then(response => { a = response; console.log("response", response) })
+            .catch(err => console.error(err))
+        console.log("a", a);
+    </script>
+</head>
+<div class="mytitle">
+    <h1>인기영화 리스트</h1>
+    <div>
+        <label>영화 검색</label>
+        <input type="영화 검색하기">
+        <button type="submit" id="search-btn">검색</button>
+    </div>
+</div>
+
+<div class="mycard" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+            card's content.</p>
+    </div>
+</div>
+</body>
+
+</html>
